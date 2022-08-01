@@ -21,7 +21,7 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
     where: { users: session.userId }, //这个find查询 很有意思
   }); //这里如果时find，那么返回的是一个数组 ，若要返回一个，则使用findone
   const allTags = await TagRepo.find({
-    // relations: ['users'],
+    relations: ['users'],
   });
   res.status(200).json({
     code: 0,
