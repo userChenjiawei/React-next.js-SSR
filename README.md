@@ -32,3 +32,64 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+npm i eslint
+{
+  "extends": ["next/core-web-vitals","eslint:recommended"]
+} eslint配置
+npm i stylelint stylelint-config-standard-scss -D 样式  
+{
+    "extends":"stylelint-config-standard-scss"
+}stylelint配置 .stylelint.json文件
+在setting中的code action （editor）中的setting.json中配置
+    "editor.codeActionsOnSave": {
+        "source.fixAll.stylelint":true 
+    }
+
+配置prettier 代码格式化 .prettierrc  文件  插件prettier-code formatter
+{
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "endOfLine": "lf",
+    "htmlWhitespaceSensitivity": "css",
+    "insertPragma": false,
+    "jsxBracketSameLine": false,
+    "jsxSingleQuote": false,
+    "printWidth": 80,
+    "proseWrap": "preserve",
+    "quoteProps": "as-needed",
+    "requirePragma": false,
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false,
+    "vueIndentScriptAndStyle": false,
+    "parser": "babel"
+  }
+
+  保存代码时 自动格式化代码 format on save
+
+  使用mockjs生成假数据
+  npm i @types/mockjs -D  由于是ts  导入会有问题 需要安装这个
+
+
+  由于单纯的使用children会报错 类型“{ children: Element; }”与类型“IntrinsicAttributes”不具有相同的属性
+  // import type { NextPage } from "next";
+import Navbar  from "../Navbar";
+import Footer from "../Footer";
+import React from 'react'
+interface LayoutProps {
+    children: React.ReactNode;
+ }
+ const Layout = ({children}:LayoutProps) => {
+    return (    
+        <div>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+        </div>
+    )
+}
+
+export default Layout
