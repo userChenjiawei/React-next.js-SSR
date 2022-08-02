@@ -4,7 +4,10 @@ import React, { useState, useEffect } from 'react';
 const { TabPane } = Tabs;
 import { Article } from '../db/entity/index';
 import AppDataSource from 'db/index';
-import ListItem from 'components/ListItem/index'
+// import ListItem from 'components/ListItem/index'
+import dynamic from 'next/dynamic'
+
+const ListItem = dynamic(() => import('components/ListItem/index'), { loading: () => <p>...</p> })
 import { IUserInfo } from 'store/userStore'
 import request from 'services/fetch'
 
